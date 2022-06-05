@@ -22,6 +22,14 @@ function init() {
         shuttleBackground.style.backgroundColor = "green";
         spaceShuttleHeight.innerHTML = "0";
     }
+    
+    function abort() {
+        it (confirm("Confirm that you want to abort the mission."))  {
+            flightStatus.innerHTML = "Mission aborted.";
+            shuttleBackground.style.backgroundColor = "green";
+            spaceShuttleHeight.innerHTML = "0";
+        }
+    }
 
     takeOffButton.addEventListener("click", takeOff);
     landButton.addEventListener("click", land);
