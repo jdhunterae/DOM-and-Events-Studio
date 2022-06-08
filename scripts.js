@@ -106,18 +106,19 @@ function init() {
     function upDownRocket() {
         rocketHeight = Math.max(rocketHeight, 0);
         spaceShuttleHeight.innerHTML = readableHeight(rocketHeight);
+        rocket.style.bottom = `${Math.min(rocketHeight / 2000, 75)}%`;
     }
 
     function leftRightRocket() {
-        if (rocketPos < 0) {
-            rocketPos = Math.max(rocketPos, -430);
-            rocket.style.marginLeft = "0px";
-            rocket.style.marginRight = `${Math.abs(rocketPos)}px`;
-        } else {
-            rocketPos = Math.min(rocketPos, 430);
-            rocket.style.marginLeft = `${Math.abs(rocketPos)}px`;
-            rocket.style.marginRight = "0px";
-        }
+        let sidePos = 50;
+
+        sidePos = sidePos + rocketPos;
+        sidePos = Math.max(sidePos, 0);
+        rocketPos = Math.max(-50, rocketPos);
+        sidePos = Math.min(sidePos, 90);
+        rocketPos = Math.min(40, rocketPos);
+
+        rocket.style.left = `${sidePos}%`;
     }
 
     function updateRocket() {
